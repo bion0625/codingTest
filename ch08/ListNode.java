@@ -11,6 +11,14 @@ public class ListNode {
          this.val = val;
          this.next = next;
      }
+    ListNode(int[] nums) {
+         this.val = nums[0];
+         ListNode cur = this;
+        for (int i = 1; i < nums.length; i++) {
+            cur.next = new ListNode(nums[i]);
+            cur = cur.next;
+        }
+    }
 
      @Override
      public String toString() {
