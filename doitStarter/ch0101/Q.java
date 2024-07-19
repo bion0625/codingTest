@@ -1,4 +1,4 @@
-package doitStarter.ch01;
+package doitStarter.ch0101;
 
 public class Q {
     public static void main (String[] args) {

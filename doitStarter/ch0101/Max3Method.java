@@ -1,4 +1,4 @@
-package doitStarter.ch01;
+package doitStarter.ch0101;
 
 public class Max3Method {
     static int max3(int a, int b, int c) {
