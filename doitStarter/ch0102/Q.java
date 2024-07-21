@@ -28,6 +28,18 @@ public class Q {
 
         // Q13
         tetragon();
+
+        // Q14
+        TriangleLB(5);
+        TriangleLU(5);
+        TriangleRU(5);
+        TriangleRB(5);
+
+        // Q15
+        spira(5);
+
+        // Q16
+        npira(5);
     }
 
     static int gSum(int n) {
@@ -108,6 +120,54 @@ public class Q {
         } while (n <= 0);
         for (int i = 0; i < n; i++) {
             System.out.println("*".repeat(n));
+        }
+    }
+
+    static void TriangleLB(int n) {
+        for (int i = 0; i <= n; i++) {
+            System.out.print("*".repeat(i));
+            System.out.print(" ".repeat(n-i));
+            System.out.println();
+        }
+    }
+
+    static void TriangleLU(int n) {
+        for (int i = 0; i <= n; i++) {
+            System.out.print("*".repeat(n-i));
+            System.out.print(" ".repeat(i));
+            System.out.println();
+        }
+    }
+
+    static void TriangleRU(int n) {
+        for (int i = 0; i <= n; i++) {
+            System.out.print(" ".repeat(i));
+            System.out.print("*".repeat(n-i));
+            System.out.println();
+        }
+    }
+
+    static void TriangleRB(int n) {
+        for (int i = 0; i <= n; i++) {
+            System.out.print(" ".repeat(n-i));
+            System.out.print("*".repeat(i));
+            System.out.println();
+        }
+    }
+
+    static void spira(int n) {
+        for (int i = 1; i <= n; i++) {
+            System.out.print(" ".repeat(n - i));
+            System.out.print("*".repeat((2 * i) - 1));
+            System.out.println();
+        }
+    }
+
+    static void npira(int n) {
+        for (int i = 1; i <= n; i++) {
+            System.out.print(" ".repeat(n - i));
+            System.out.print(String.valueOf(i).repeat((2 * i) - 1));
+            System.out.println();
         }
     }
 }
