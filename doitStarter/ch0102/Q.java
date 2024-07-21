@@ -19,6 +19,15 @@ public class Q {
         Scanner stdIn = new Scanner(System.in);
         int n = stdIn.nextInt();
         System.out.println("그 수는 " + tenString(n) + "자리입니다.");
+
+        // Q11
+        multi99Table();
+
+        // Q12
+        plus99Table();
+
+        // Q13
+        tetragon();
     }
 
     static int gSum(int n) {
@@ -50,5 +59,55 @@ public class Q {
             cnt++;
         } while (n/10 >= 1);
         return cnt;
+    }
+
+    static void multi99Table() {
+        for (int i = 0; i <= 9; i++) {
+            if (i == 0) {
+                System.out.print("   |");
+                for (int j = 1; j <=9; j++) {
+                    System.out.print("  " + j);
+                }
+                System.out.print("\n---+---------------------------");
+            }
+            else {
+                for (int j = 0; j <= 9; j++) {
+                    if (j == 0) System.out.print(i + "  |");
+                    else System.out.printf("%3d", i * j);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    static void plus99Table() {
+        for (int i = 0; i <= 9; i++) {
+            if (i == 0) {
+                System.out.print("   |");
+                for (int j = 1; j <=9; j++) {
+                    System.out.print("  " + j);
+                }
+                System.out.print("\n---+---------------------------");
+            }
+            else {
+                for (int j = 0; j <= 9; j++) {
+                    if (j == 0) System.out.print(i + "  |");
+                    else System.out.printf("%3d", i + j);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    static void tetragon() {
+        Scanner stdIn = new Scanner(System.in);
+        int n;
+        do {
+            System.out.print("변의 길이: ");
+            n = stdIn.nextInt();
+        } while (n <= 0);
+        for (int i = 0; i < n; i++) {
+            System.out.println("*".repeat(n));
+        }
     }
 }
