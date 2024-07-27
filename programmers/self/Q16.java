@@ -43,7 +43,8 @@ public class Q16 {
         // n-1개의 원판을 (n이 2면 1개로 소급) 남는 원판(empty)으로 옮기기
         moveHanoi(n - 1, from, empty, result);
         // n번째 가장 큰 원판을 목적 원판으로 옮기기
-        result.add(new int[]{from, to});
+//        result.add(new int[]{from, to});
+        moveHanoi(1, from, to,result);
         // n-1개의 원판을 남는 원판(empty)에서 다시 목적 원판으로 옮기기
         moveHanoi(n - 1, empty, to, result);
         return result;
