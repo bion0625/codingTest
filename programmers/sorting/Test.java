@@ -33,5 +33,21 @@ public class Test {
         Stream<Integer> stream = Stream.of(5,10,7,9,3,2).sorted();
         // [2,3,5,7,9,10]
         System.out.println(stream.collect(Collectors.toList()));
+
+        int[] arr = {5,3,7,4,7,4,0,9};
+        int[] reversed = Arrays.stream(arr)
+                .boxed()
+                .sorted((v1, v2) -> v2 - v1)
+                .mapToInt(Integer::intValue)
+                .toArray();
+
+        // [9,7,7,5,4,4,3,0]
+        System.out.println(Arrays.toString(reversed));
+
+        String[] words = {"java","algorithm","programming","happy","fun","coding"};
+        Arrays.sort(words, (v1, v2) -> v1.length() - v2.length());
+
+        // [fun, java, happy, coding, algorithm, programming]
+        System.out.println(Arrays.toString(words));
     }
 }
