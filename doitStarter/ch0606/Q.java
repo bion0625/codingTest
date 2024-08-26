@@ -130,12 +130,54 @@ public class Q {
         }
     }
 
+    static void insertionSort(int[] a, int nx) {
+        for (int i = 1; i < nx; i++) {
+            for (int j = 0; j < i; j++) {
+                if (a[j] > a[i]) {
+                    int t = a[i];
+                    for (int k = i; k > j; k--)
+                        a[k] = a[k - 1];
+                    a[j] = t;
+                }
+            }
+        }
+    }
+
     static int sort3elem(int[] x, int a, int b, int c) {
         if (x[b] < x[a]) swap(x, a, b);
         if (x[c] < x[b]) swap(x, c, b);
         if (x[b] < x[a]) swap(x, b, a);
         return b;
     }
+
+    static void quickSort4(int[] a, int left, int right) {
+        if (right <= 8) {
+            insertionSort(a, right + 1);
+            return;
+        }
+        int pl = left;
+        int pr = right;
+        int m = sort3elem(a, pl, (pl + pr) / 2, pr); // 처음, 가운데, 끝 요소를 정렬
+        int x = a[m]; // 피벗
+
+        swap(a, m, right - 1); // 가운데 요소와 끝에서 두 번째 요소를 교환
+        pl++; // 왼쪽 커서를 오른쪽으로 1만큼 진행
+        pr -= 2; // 오른쪽 커서를 왼쪽으로 2만큼 진행
+
+        do {
+            while (a[pl] < x) pl++;
+            while (a[pr] > x) pr--;
+            if (pl <= pr) swap(a, pl++, pr--);
+        } while (pl <= pr);
+
+        if (left < pr) quickSort(a, left, pr);
+        if (pl < right) quickSort(a, pl, right);
+    }
+
+    static void quickSort5(int[] a, int n) {
+        quickSort4(a, 0, n - 1);
+    }
+
     static void q11() {
         Scanner stdIn = new Scanner(System.in);
 
@@ -178,9 +220,55 @@ public class Q {
         }
     }
 
+    static void q13() {
+        Scanner stdIn = new Scanner(System.in);
+
+        System.out.println("퀵 정렬");
+        System.out.print("요솟수: ");
+        int nx = stdIn.nextInt();
+        int[] x = new int[nx];
+
+        for (int i = 0; i < nx; i++) {
+            System.out.print("x[" + i +"]: ");
+            x[i] = stdIn.nextInt();
+        }
+
+        quickSort4(x, 0, nx - 1);
+
+        System.out.println("오름차순으로 정렬했습니다.");
+        for (int i = 0; i < nx; i++) {
+            System.out.println("x[" + i + "]=" + x[i]);
+        }
+    }
+
+    static void q14() {
+        Scanner stdIn = new Scanner(System.in);
+
+        System.out.println("퀵 정렬");
+        System.out.print("요솟수: ");
+        int nx = stdIn.nextInt();
+        int[] x = new int[nx];
+
+        for (int i = 0; i < nx; i++) {
+            System.out.print("x[" + i +"]: ");
+            x[i] = stdIn.nextInt();
+        }
+
+        quickSort5(x, nx);
+
+        System.out.println("오름차순으로 정렬했습니다.");
+        for (int i = 0; i < nx; i++) {
+            System.out.println("x[" + i + "]=" + x[i]);
+        }
+    }
+
     public static void main(String[] args) {
         q11();
 
         q12();
+
+        q13();
+
+        q14();
     }
 }
